@@ -70,10 +70,8 @@ def plot():
       fig = plt.figure()
       ax = fig.add_subplot(111)
 
-      #tamaño de la grafica
-      fig.set_size_inches(5, 3)
+      fig.set_size_inches(5, 4)
 
-      #si no se ha presionado el boton de modificar tabla command=plot_modify
       if txtxlabel.get() == "" and txtylabel.get() == "" and txttitle.get() == "" and cmbcolorinitial.get() == "" and cmbcolorprediction.get() == "" and cmbcolordotinitial.get() == "" and cmbcolordotprediction.get() == "" and txtmodifynormal.get() == "" and txtmodifyprediction.get() == "":
             ax.plot(X,y,color="red",marker="o",markerfacecolor="blue",label="Presion actual")
             ax.plot(X,y_pred,color="blue",marker="o",markerfacecolor="blue",label="Presion ajustada")
@@ -113,7 +111,7 @@ def plot_modify():
       clearplot()
       fig = plt.figure()
       ax = fig.add_subplot(111)
-      fig.set_size_inches(5, 3)
+      fig.set_size_inches(5, 4)
       if cmbcolorinitial.get() == "":
             cmbcolorinitial.set("Rojo")
       if cmbcolorprediction.get() == "":
@@ -223,7 +221,7 @@ btnopen = Button(frame_buttons, text="CARGAR DATOS", command=opendata, font=("Ar
 btnopen.grid(row=2, column=1)
 
 frame_lists = Frame(window, bg="#FCFCFC")
-frame_lists.place(x=350, y=350)
+frame_lists.place(x=350, y=450)
 
 lbl_tabla = Label(frame_lists, text="TABLA", font=("Arial", 12, "bold"), fg="white", bg="black")
 lbl_tabla.grid(row=0, column=0, columnspan=3, sticky="w")
