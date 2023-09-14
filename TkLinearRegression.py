@@ -234,7 +234,7 @@ lbl_tabla = Label(frame_lists, text="TABLA", font=("Arial", 12, "bold"), fg="whi
 lbl_tabla.grid(row=0, column=0, columnspan=3, sticky="w")
 
 lstdepth = Listbox(frame_lists)
-lstdepth.grid(row=1, column=0, padx=10, pady=20, sticky="nsew")
+lstdepth.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 
 lstpressure = Listbox(frame_lists)
 lstpressure.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
