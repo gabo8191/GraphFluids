@@ -81,9 +81,10 @@ def plot():
             ax.legend()
       else:
             plot_modify()
-      canvas = FigureCanvasTkAgg(fig,master=window)
-      canvas.draw()
-      canvas.get_tk_widget().pack()
+      # canvas = FigureCanvasTkAgg(fig,master=window)
+      # canvas.draw()
+      # canvas.get_tk_widget().pack()
+      plt.show()
 
 def plot_modify():
       depths = list(lstdepth.get(0,lstdepth.size()-1))
@@ -127,9 +128,10 @@ def plot_modify():
       ax.set_ylabel(txtylabel.get())
       ax.legend()
 
-      canvas = FigureCanvasTkAgg(fig,master=window)
-      canvas.draw()
-      canvas.get_tk_widget().pack()
+      # canvas = FigureCanvasTkAgg(fig,master=window)
+      # canvas.draw()
+      # canvas.get_tk_widget().pack()
+      plt.show()
 
 def clearplot():
       for widget in window.winfo_children():
@@ -164,15 +166,20 @@ def opendata():
       else:
             messagebox.showerror("Error","No data found to load")
 
+
+
 depths = []
 pressures = []
 data = {}
 window = Tk()
+window.resizable(False, False)
+window.geometry("920x460+100+50")
+
 
 window.config(bg="#e5e5e5")
 window.title("Regresion Lineal Simple de Presión vs. Profundidad")
-window.state("zoomed")
-window.attributes("-toolwindow", 1)
+#window.state("zoomed")
+#window.attributes("-toolwindow", 1)
 
 window.rowconfigure(0,weight=1)
 window.columnconfigure(0,weight=1)
@@ -221,13 +228,13 @@ btnopen = Button(frame_buttons, text="CARGAR DATOS", command=opendata, font=("Ar
 btnopen.grid(row=2, column=1)
 
 frame_lists = Frame(window, bg="#FCFCFC")
-frame_lists.place(x=350, y=450)
+frame_lists.place(x=350, y=10)
 
 lbl_tabla = Label(frame_lists, text="TABLA", font=("Arial", 12, "bold"), fg="white", bg="black")
 lbl_tabla.grid(row=0, column=0, columnspan=3, sticky="w")
 
 lstdepth = Listbox(frame_lists)
-lstdepth.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+lstdepth.grid(row=1, column=0, padx=10, pady=20, sticky="nsew")
 
 lstpressure = Listbox(frame_lists)
 lstpressure.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
@@ -255,7 +262,7 @@ tip.bind_widget(lstpredpressure, balloonmsg="Presión ajustada")
 
 frame_modifiers = Frame(window, bg="#FCFCFC")
 
-frame_modifiers.place(x=1000, y=10)
+frame_modifiers.place(x=10, y=195)
 lbl_modificar_tabla = Label(frame_modifiers, text="MODIFICAR TABLA", font=("Arial", 12, "bold"), fg="white", bg="black")
 lbl_modificar_tabla.grid(row=0, column=0, columnspan=2, sticky="w")
 
