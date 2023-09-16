@@ -66,6 +66,9 @@ def plot():
       txtintercept.insert(0,str(round(model.intercept_,2)))
       txtslope.delete(0,END)
       txtslope.insert(0,str(round(model.coef_[0],2)))
+      txtdensity.delete(0,END)
+      txtdensity.insert(0,str(round(model.coef_[0]/9.81,2)))
+
       clearplot()
       fig = plt.figure()
       ax = fig.add_subplot(111)
@@ -81,9 +84,6 @@ def plot():
             ax.legend()
       else:
             plot_modify()
-      # canvas = FigureCanvasTkAgg(fig,master=window)
-      # canvas.draw()
-      # canvas.get_tk_widget().pack()
       plt.show()
 
 def plot_modify():
@@ -127,10 +127,6 @@ def plot_modify():
       ax.set_xlabel(txtxlabel.get())
       ax.set_ylabel(txtylabel.get())
       ax.legend()
-
-      # canvas = FigureCanvasTkAgg(fig,master=window)
-      # canvas.draw()
-      # canvas.get_tk_widget().pack()
       plt.show()
 
 def clearplot():
@@ -166,8 +162,6 @@ def opendata():
       else:
             messagebox.showerror("Error","No data found to load")
 
-
-
 depths = []
 pressures = []
 data = {}
@@ -178,8 +172,6 @@ window.geometry("790x460+100+50")
 
 window.config(bg="white")
 window.title("Regresion Lineal Simple de Presión vs. Profundidad")
-#window.state("zoomed")
-#window.attributes("-toolwindow", 1)
 
 window.rowconfigure(0,weight=1)
 window.columnconfigure(0,weight=1)
@@ -261,6 +253,15 @@ lblslope.grid(row=3, column=1)
 
 txtslope = Entry(frame_lists)
 txtslope.grid(row=4, column=1)
+
+lbldensity = Label(frame_lists, text="Densidad: ", anchor="w", font=("Arial", 10), fg="white", bg=color)
+lbldensity.grid(row=3, column=2)
+
+txtdensity = Entry(frame_lists)
+txtdensity.grid(row=4, column=2)
+
+lbl_indicacion = Label(frame_lists, text="Pendiente / 9,81 (m/s^2)", anchor="w", font=("Arial", 8, "italic", "bold"), fg="white", bg=color)
+lbl_indicacion.grid(row=5, column=2, sticky="w")
 
 lstdepth.bind("<<ListboxSelect>>", listselected)
 
